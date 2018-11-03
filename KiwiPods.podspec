@@ -94,10 +94,11 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
-  s.dependency 'Alamofire'
+  
 
   s.subspec 'Test' do |network|
     network.source_files = "KiwiPods/Tetsing/**/*.{h,m,swift}"
+    network.dependency 'Alamofire'
     end
 
 
