@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => 'https://github.com/ayushawasthi/KiwiPods.git'}
+  s.source       = { :git => 'https://github.com/KiwiTechLLC/KiwiPods.git'}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -94,7 +94,7 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
-  
+
 
   s.subspec 'Test' do |network|
     network.source_files = "KiwiPods/Tetsing/**/*.{h,m,swift}"
