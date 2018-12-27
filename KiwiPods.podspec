@@ -118,6 +118,7 @@ Pod::Spec.new do |s|
     socialMedia.subspec 'Twitter' do |twitter|
       twitter.source_files = "KiwiPods/Social/Twitter/**/*.{h,m,swift}"
       twitter.dependency 'TwitterKit'
+    end
   end
 
   s.subspec 'ImagePicker' do |imagePicker|
