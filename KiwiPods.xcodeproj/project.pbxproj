@@ -8,7 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		38F04F541C2C888359AB8568 /* Pods_KiwiPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41185E9826A76800BF01C8A8 /* Pods_KiwiPods.framework */; };
-		D6A8D744218C38A400F32EE1 /* ABC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A8D743218C38A400F32EE1 /* ABC.swift */; };
+		D66ADF4121D50488004499F2 /* HashTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF3E21D50488004499F2 /* HashTextView.swift */; };
+		D66ADF4221D50488004499F2 /* UILinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4021D50488004499F2 /* UILinkLabel.swift */; };
+		D66ADF4F21D504B0004499F2 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4321D504AD004499F2 /* ImagePickerController.swift */; };
+		D66ADF5021D504B0004499F2 /* FacebookLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4421D504AD004499F2 /* FacebookLoginHelper.swift */; };
+		D66ADF5121D504B0004499F2 /* TwitterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4521D504AE004499F2 /* TwitterHandler.swift */; };
+		D66ADF5221D504B0004499F2 /* DeviceMediaHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4621D504AE004499F2 /* DeviceMediaHandler.swift */; };
+		D66ADF5321D504B0004499F2 /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4721D504AE004499F2 /* FacebookHandler.swift */; };
+		D66ADF5421D504B0004499F2 /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4821D504AE004499F2 /* TwitterHelper.swift */; };
+		D66ADF5521D504B0004499F2 /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4921D504AE004499F2 /* ImagePickerCell.swift */; };
+		D66ADF5621D504B0004499F2 /* ImagePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66ADF4A21D504AF004499F2 /* ImagePickerCell.xib */; };
+		D66ADF5721D504B0004499F2 /* ImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66ADF4B21D504AF004499F2 /* ImagePickerController.xib */; };
+		D66ADF5821D504B0004499F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4C21D504AF004499F2 /* ImagePicker.swift */; };
+		D66ADF5921D504B0004499F2 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66ADF4D21D504AF004499F2 /* LoadingCell.xib */; };
+		D66ADF5A21D504B0004499F2 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4E21D504B0004499F2 /* LoadingCell.swift */; };
 		D6B031612189D172003431C6 /* KiwiPods.h in Headers */ = {isa = PBXBuildFile; fileRef = D6B0315F2189D172003431C6 /* KiwiPods.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6B031692189D2C9003431C6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B031682189D2C9003431C6 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -17,7 +30,20 @@
 		41185E9826A76800BF01C8A8 /* Pods_KiwiPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KiwiPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807FADC5BC231460701B403A /* Pods-KiwiPods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiPods.release.xcconfig"; path = "Pods/Target Support Files/Pods-KiwiPods/Pods-KiwiPods.release.xcconfig"; sourceTree = "<group>"; };
 		C57934D16A5207D271DDC35C /* Pods-KiwiPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiPods.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KiwiPods/Pods-KiwiPods.debug.xcconfig"; sourceTree = "<group>"; };
-		D6A8D743218C38A400F32EE1 /* ABC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABC.swift; sourceTree = "<group>"; };
+		D66ADF3E21D50488004499F2 /* HashTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashTextView.swift; sourceTree = "<group>"; };
+		D66ADF4021D50488004499F2 /* UILinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILinkLabel.swift; sourceTree = "<group>"; };
+		D66ADF4321D504AD004499F2 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
+		D66ADF4421D504AD004499F2 /* FacebookLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginHelper.swift; sourceTree = "<group>"; };
+		D66ADF4521D504AE004499F2 /* TwitterHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHandler.swift; sourceTree = "<group>"; };
+		D66ADF4621D504AE004499F2 /* DeviceMediaHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceMediaHandler.swift; sourceTree = "<group>"; };
+		D66ADF4721D504AE004499F2 /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
+		D66ADF4821D504AE004499F2 /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
+		D66ADF4921D504AE004499F2 /* ImagePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
+		D66ADF4A21D504AF004499F2 /* ImagePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerCell.xib; sourceTree = "<group>"; };
+		D66ADF4B21D504AF004499F2 /* ImagePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerController.xib; sourceTree = "<group>"; };
+		D66ADF4C21D504AF004499F2 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D66ADF4D21D504AF004499F2 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		D66ADF4E21D504B0004499F2 /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		D6B0315C2189D172003431C6 /* KiwiPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiwiPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B0315F2189D172003431C6 /* KiwiPods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiwiPods.h; sourceTree = "<group>"; };
 		D6B031602189D172003431C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,12 +71,62 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D6A8D742218C388D00F32EE1 /* Tetsing */ = {
+		D66ADF3D21D50488004499F2 /* HashTextView */ = {
 			isa = PBXGroup;
 			children = (
-				D6A8D743218C38A400F32EE1 /* ABC.swift */,
+				D66ADF3E21D50488004499F2 /* HashTextView.swift */,
 			);
-			path = Tetsing;
+			path = HashTextView;
+			sourceTree = "<group>";
+		};
+		D66ADF3F21D50488004499F2 /* UILinkLabel */ = {
+			isa = PBXGroup;
+			children = (
+				D66ADF4021D50488004499F2 /* UILinkLabel.swift */,
+			);
+			path = UILinkLabel;
+			sourceTree = "<group>";
+		};
+		D66ADF5B21D504BA004499F2 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				D66ADF4721D504AE004499F2 /* FacebookHandler.swift */,
+				D66ADF4421D504AD004499F2 /* FacebookLoginHelper.swift */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		D66ADF5C21D504C6004499F2 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				D66ADF4521D504AE004499F2 /* TwitterHandler.swift */,
+				D66ADF4821D504AE004499F2 /* TwitterHelper.swift */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		D66ADF5D21D504D8004499F2 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				D66ADF5B21D504BA004499F2 /* Facebook */,
+				D66ADF5C21D504C6004499F2 /* Twitter */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		D66ADF5E21D504E5004499F2 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				D66ADF4621D504AE004499F2 /* DeviceMediaHandler.swift */,
+				D66ADF4C21D504AF004499F2 /* ImagePicker.swift */,
+				D66ADF4921D504AE004499F2 /* ImagePickerCell.swift */,
+				D66ADF4A21D504AF004499F2 /* ImagePickerCell.xib */,
+				D66ADF4321D504AD004499F2 /* ImagePickerController.swift */,
+				D66ADF4B21D504AF004499F2 /* ImagePickerController.xib */,
+				D66ADF4E21D504B0004499F2 /* LoadingCell.swift */,
+				D66ADF4D21D504AF004499F2 /* LoadingCell.xib */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		D6B031522189D172003431C6 = {
@@ -75,9 +151,12 @@
 			isa = PBXGroup;
 			children = (
 				D6B0315F2189D172003431C6 /* KiwiPods.h */,
+				D66ADF5E21D504E5004499F2 /* ImagePicker */,
+				D66ADF5D21D504D8004499F2 /* Social */,
+				D66ADF3D21D50488004499F2 /* HashTextView */,
+				D66ADF3F21D50488004499F2 /* UILinkLabel */,
 				D6B031672189D2C9003431C6 /* Networking */,
 				D6B031602189D172003431C6 /* Info.plist */,
-				D6A8D742218C388D00F32EE1 /* Tetsing */,
 			);
 			path = KiwiPods;
 			sourceTree = "<group>";
@@ -168,6 +247,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66ADF5621D504B0004499F2 /* ImagePickerCell.xib in Resources */,
+				D66ADF5721D504B0004499F2 /* ImagePickerController.xib in Resources */,
+				D66ADF5921D504B0004499F2 /* LoadingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,8 +296,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6A8D744218C38A400F32EE1 /* ABC.swift in Sources */,
+				D66ADF5321D504B0004499F2 /* FacebookHandler.swift in Sources */,
+				D66ADF5221D504B0004499F2 /* DeviceMediaHandler.swift in Sources */,
+				D66ADF5121D504B0004499F2 /* TwitterHandler.swift in Sources */,
+				D66ADF4221D50488004499F2 /* UILinkLabel.swift in Sources */,
 				D6B031692189D2C9003431C6 /* NetworkManager.swift in Sources */,
+				D66ADF5021D504B0004499F2 /* FacebookLoginHelper.swift in Sources */,
+				D66ADF5A21D504B0004499F2 /* LoadingCell.swift in Sources */,
+				D66ADF4121D50488004499F2 /* HashTextView.swift in Sources */,
+				D66ADF5821D504B0004499F2 /* ImagePicker.swift in Sources */,
+				D66ADF4F21D504B0004499F2 /* ImagePickerController.swift in Sources */,
+				D66ADF5421D504B0004499F2 /* TwitterHelper.swift in Sources */,
+				D66ADF5521D504B0004499F2 /* ImagePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

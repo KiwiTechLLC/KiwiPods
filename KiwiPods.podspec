@@ -96,10 +96,34 @@ Pod::Spec.new do |s|
   # s.public_header_files = "Classes/**/*.h"
 
 
-  s.subspec 'Test' do |network|
-    network.source_files = "KiwiPods/Tetsing/**/*.{h,m,swift}"
+  s.subspec 'Networking' do |network|
+    network.source_files = "KiwiPods/Networking/**/*.{h,m,swift}"
     network.dependency 'Alamofire'
+  end
+
+  s.subspec 'HashTextView' do |hashTextView|
+    hashTextView.source_files = "KiwiPods/HashTextView/**/*.{h,m,swift}"
+  end
+
+  s.subspec 'LinkLabel' do |linkLabel|
+    linkLabel.source_files = "KiwiPods/UILinkLabel/**/*.{h,m,swift}"
+  end
+
+  s.subspec 'Social' do |socialMedia|
+    socialMedia.subspec 'Facebook' do |facebook|
+      facebook.source_files = "KiwiPods/Social/Facebook/**/*.{h,m,swift}"
+      facebook.dependency 'FBSDKLoginKit'
+      facebook.dependency 'FBSDKShareKit'
     end
+    socialMedia.subspec 'Twitter' do |twitter|
+      twitter.source_files = "KiwiPods/Social/Twitter/**/*.{h,m,swift}"
+      twitter.dependency 'TwitterKit'
+  end
+
+  s.subspec 'ImagePicker' do |imagePicker|
+    imagePicker.source_files = "KiwiPods/ImagePicker/**/*.{h,m,swift}"
+    imagePicker.dependency 'KiwiPods/Social'
+  end
 
 
 
