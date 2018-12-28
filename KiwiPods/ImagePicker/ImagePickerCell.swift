@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class ImagePickerCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
