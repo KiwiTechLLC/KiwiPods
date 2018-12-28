@@ -125,6 +125,7 @@ Pod::Spec.new do |s|
     imagePicker.source_files = "KiwiPods/ImagePicker/**/*.{h,m,swift}"
     imagePicker.dependency 'KiwiPods/Social'
     imagePicker.dependency 'SDWebImage'
+    imagePicker.dependency 'MBProgressHUD'
   end
 
 
