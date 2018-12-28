@@ -124,6 +124,7 @@ Pod::Spec.new do |s|
   s.subspec 'ImagePicker' do |imagePicker|
     imagePicker.source_files = "KiwiPods/ImagePicker/**/*.{h,m,swift}"
     imagePicker.dependency 'KiwiPods/Social'
+    imagePicker.dependency 'SDWebImage'
   end
 
 
