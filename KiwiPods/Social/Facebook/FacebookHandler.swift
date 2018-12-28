@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FacebookHandler: NSObject {
+open class FacebookHandler: NSObject {
     fileprivate var facebookImageResponsePage: FacebookPageInfo?
-    open func getFacebookPhotos(controller: UIViewController, completion: @escaping (_ result: FacebookUserImagesResponse?, _ error: Error?) -> Void) {
+    public func getFacebookPhotos(controller: UIViewController, completion: @escaping (_ result: FacebookUserImagesResponse?, _ error: Error?) -> Void) {
         if facebookImageResponsePage != nil, facebookImageResponsePage?.next == nil {
             completion(nil, nil)
             return
@@ -21,12 +21,12 @@ class FacebookHandler: NSObject {
         })
         
     }
-    open func getFacebookUserInfo(controller: UIViewController, completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
+    public func getFacebookUserInfo(controller: UIViewController, completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
         
     }
     fileprivate static var imageUrls = [String: String]()
     fileprivate static var queuedUrls = [String]()
-    open func imageUrlFrom(model: FacebookImageModel, completion: @escaping (String?, Error?) -> Void)
+    public func imageUrlFrom(model: FacebookImageModel, completion: @escaping (String?, Error?) -> Void)
     {
         //dont hit request for already requested id
         guard FacebookHandler.queuedUrls.contains(model.id) == false else{

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TwitterHandler: NSObject {
+open class TwitterHandler: NSObject {
     fileprivate var currentPage: Int = 1
     fileprivate var mayHaveNextPage = true
-    open func getPhotos(completion: @escaping ([URL]?, Error?) -> Void) {
+    public func getPhotos(completion: @escaping ([URL]?, Error?) -> Void) {
         guard mayHaveNextPage else {
             completion(nil, nil)
             return

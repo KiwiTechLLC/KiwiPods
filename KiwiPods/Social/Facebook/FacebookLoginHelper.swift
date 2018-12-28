@@ -9,17 +9,17 @@
 import Foundation
 import FBSDKLoginKit
 import FBSDKCoreKit
-enum FacebookReadPermissions: String, CaseIterable {
+public enum FacebookReadPermissions: String, CaseIterable {
     case userProfile = "public_profile"
     case email = "email"
     case birthday = "user_birthday"
     case gender = "user_gender",
     photos = "user_photos"
 }
-enum FacebookPublishPermissions: String {
+public enum FacebookPublishPermissions: String {
     case publishPages = "publish_pages"
 }
-enum FacebookData: String, CaseIterable {
+public enum FacebookData: String, CaseIterable {
     case userId = "id"
     case userName =  "name"
     case userEmail = "email"
@@ -28,12 +28,12 @@ enum FacebookData: String, CaseIterable {
     case gender = "gender"
 }
 
-enum FaceBookLoginResult {
+public enum FaceBookLoginResult {
     case success(loginResult: FaceBookLoginData)
     case error(message: String)
     case cancelled
 }
-struct  FaceBookLoginData: Codable {
+public struct  FaceBookLoginData: Codable {
     var userId: String?
     var name: String?
     var email: String?
@@ -49,25 +49,25 @@ struct  FaceBookLoginData: Codable {
         case picture
     }
 }
-struct FacebookUserImagesResponse: Codable {
+public struct FacebookUserImagesResponse: Codable {
     var data: [FacebookImageModel]?
     var paging: FacebookPageInfo?
     var hasNextPage: Bool {
         return paging?.next != nil
     }
 }
-struct FacebookImageModel: Codable {
+public struct FacebookImageModel: Codable {
     var created_time: String
     var id: String
 }
-struct FacebookImageResponse: Codable {
+public struct FacebookImageResponse: Codable {
     var data: PictureData?
 }
-struct  Picture: Codable {
+public struct  Picture: Codable {
     var data: PictureData?
     var paging: FacebookPageInfo?
 }
-struct PictureData: Codable {
+public struct PictureData: Codable {
     var height: Int?
     var width: Int?
     var url: String?
@@ -78,16 +78,16 @@ struct PictureData: Codable {
         return sortedImagesBySize?.first?.source
     }
 }
-struct FacebookImageVariations: Codable {
+public struct FacebookImageVariations: Codable {
     var height: Int = 0
     var width: Int = 0
     var source: URL?
 }
-struct FacebookPageInfo: Codable {
+public struct FacebookPageInfo: Codable {
     var next: URL?
     var cursors: FacebookPageCursor?
 }
-struct FacebookPageCursor: Codable {
+public struct FacebookPageCursor: Codable {
     var before: String?
     var after: String?
 }
@@ -112,7 +112,7 @@ final class FacebookLoginHelper {
             }
         }
     }
-    func getUserInfo(_ accessToken: FBSDKAccessToken, requestData: [String], completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
+    public func getUserInfo(_ accessToken: FBSDKAccessToken, requestData: [String], completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
         checklogin { (success, error) in
             if success {
                 let graphRequest = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": requestData.joined(separator: ",")])
@@ -133,7 +133,7 @@ final class FacebookLoginHelper {
             }
         }
     }
-    func fetchUserPhotos(after: String? = nil, completion: @escaping (_ result: FacebookUserImagesResponse?, _ error: Error?) -> Void) {
+    public func fetchUserPhotos(after: String? = nil, completion: @escaping (_ result: FacebookUserImagesResponse?, _ error: Error?) -> Void) {
         checklogin { (success, error) in
             var params = ["type":"uploaded"]
             if let after = after {
@@ -154,7 +154,7 @@ final class FacebookLoginHelper {
             })
         }
     }
-    func getFacebookImageDetails(imageId: String, completion: @escaping (PictureData?, Error?) -> Void) {
+    public func getFacebookImageDetails(imageId: String, completion: @escaping (PictureData?, Error?) -> Void) {
         checklogin { (success, error) in
             if success {
                 //to be used -- 108566810189028?fields=height,width,images,picture

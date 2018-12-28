@@ -9,18 +9,18 @@
 import UIKit
 import SDWebImage
 import MBProgressHUD
-enum ImagePickerValidationError {
+public enum ImagePickerValidationError {
     /// When user tap on done without selecting `minAllowedImages`
     case minItemNotSelected
     /// When user tap on item that is exceeds the `maxAllowedImages`
     case maxItemSelectionLimitExceeded
 }
-protocol ImagePickerControllerDelegate {
+public protocol ImagePickerControllerDelegate {
     func imagePickerDidCancel(picker: ImagePickerController)
     func imagePicker(picker: ImagePickerController, finishedPickingImages images: [UIImage])
     func imagePicker(picker: ImagePickerController, failedWithError: ImagePickerValidationError)
 }
-class ImagePickerController: UIViewController {
+open class ImagePickerController: UIViewController {
 
     @IBOutlet fileprivate var collectionView: UICollectionView!
     var maxAllowedImages: Int = 10
@@ -41,11 +41,11 @@ class ImagePickerController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "ImagePickerCell", bundle: nil), forCellWithReuseIdentifier: "ImagePickerCell")
         collectionView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellWithReuseIdentifier: "LoadingCell")
@@ -255,7 +255,7 @@ class ImagePickerController: UIViewController {
     }
 }
 extension ImagePickerController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count = 0
         switch type {
         case .facebook:
@@ -271,7 +271,7 @@ extension ImagePickerController: UICollectionViewDataSource {
         return count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < imageAryCount {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagePickerCell", for: indexPath) as! ImagePickerCell
             switch type {
