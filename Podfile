@@ -9,6 +9,7 @@ target 'KiwiPods' do
   pod 'FBSDKShareKit'
   pod 'SDWebImage'
   pod 'TwitterKit'
+  pod 'MBProgressHUD'
   # Pods for KiwiPods
 
 end

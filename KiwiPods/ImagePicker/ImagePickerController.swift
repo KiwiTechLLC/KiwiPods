@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import MBProgressHUD
 enum ImagePickerValidationError {
     /// When user tap on done without selecting `minAllowedImages`
     case minItemNotSelected
