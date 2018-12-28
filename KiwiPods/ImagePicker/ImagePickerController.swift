@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 enum ImagePickerValidationError {
     /// When user tap on done without selecting `minAllowedImages`
     case minItemNotSelected
