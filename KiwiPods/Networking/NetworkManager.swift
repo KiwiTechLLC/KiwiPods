@@ -40,8 +40,8 @@ public protocol APIConfigurable: URLRequestConvertible {
     var headers: [String: String]? { get }
 }
 
-extension APIConfigurable {
-    func asURLRequest() -> URLRequest? {
+public extension APIConfigurable {
+    public func asURLRequest() -> URLRequest? {
         var queryItems = ""
         if type == .GET, parameters.count > 0 {
             queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
