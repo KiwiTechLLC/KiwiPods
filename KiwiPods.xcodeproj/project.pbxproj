@@ -22,6 +22,7 @@
 		D66ADF5821D504B0004499F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4C21D504AF004499F2 /* ImagePicker.swift */; };
 		D66ADF5921D504B0004499F2 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66ADF4D21D504AF004499F2 /* LoadingCell.xib */; };
 		D66ADF5A21D504B0004499F2 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4E21D504B0004499F2 /* LoadingCell.swift */; };
+		D69C64D121E334FF00E22013 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C64D021E334FF00E22013 /* NetworkModel.swift */; };
 		D6B031612189D172003431C6 /* KiwiPods.h in Headers */ = {isa = PBXBuildFile; fileRef = D6B0315F2189D172003431C6 /* KiwiPods.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6B031692189D2C9003431C6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B031682189D2C9003431C6 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		D66ADF4C21D504AF004499F2 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D66ADF4D21D504AF004499F2 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		D66ADF4E21D504B0004499F2 /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		D69C64D021E334FF00E22013 /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		D6B0315C2189D172003431C6 /* KiwiPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiwiPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B0315F2189D172003431C6 /* KiwiPods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiwiPods.h; sourceTree = "<group>"; };
 		D6B031602189D172003431C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				D6B031682189D2C9003431C6 /* NetworkManager.swift */,
+				D69C64D021E334FF00E22013 /* NetworkModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				D66ADF5321D504B0004499F2 /* FacebookHandler.swift in Sources */,
 				D66ADF5221D504B0004499F2 /* DeviceMediaHandler.swift in Sources */,
 				D66ADF5121D504B0004499F2 /* TwitterHandler.swift in Sources */,
+				D69C64D121E334FF00E22013 /* NetworkModel.swift in Sources */,
 				D66ADF4221D50488004499F2 /* UILinkLabel.swift in Sources */,
 				D6B031692189D2C9003431C6 /* NetworkManager.swift in Sources */,
 				D66ADF5021D504B0004499F2 /* FacebookLoginHelper.swift in Sources */,
