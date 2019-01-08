@@ -1,6 +1,6 @@
 //
 //  FacebookLoginHelper.swift
-//  CleanSwiftDemo
+//  
 //
 //  Created by KiwiTech on 17/07/2018.
 //  Copyright © 2018 KiwiTech. All rights reserved.
@@ -97,7 +97,7 @@ final class FacebookLoginHelper {
     class func getCurrentAccessToken() -> String? {
         return FBSDKAccessToken.current()?.tokenString
     }
-    fileprivate func checklogin(completion: ((Bool, Error?) -> Void)?) {
+    public func checklogin(completion: ((Bool, Error?) -> Void)?) {
         if let _ = FBSDKAccessToken.current() {
             completion?(true, nil)
         } else {
@@ -107,12 +107,14 @@ final class FacebookLoginHelper {
                 } else {
                     if let result = result, !result.isCancelled {
                         completion?(true, nil)
+                    } else {
+                        completion?(false, nil)
                     }
                 }
             }
         }
     }
-    public func getUserInfo(_ accessToken: FBSDKAccessToken, requestData: [String], completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
+    public func getUserInfo(requestData: [String], completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
         checklogin { (success, error) in
             if success {
                 let graphRequest = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": requestData.joined(separator: ",")])
