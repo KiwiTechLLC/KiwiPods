@@ -29,7 +29,7 @@ open class GoogleHandler: NSObject {
     }
 }
 extension GoogleHandler: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         guard error == nil else {
             loginCompletion?(nil, error)
             return
@@ -38,13 +38,13 @@ extension GoogleHandler: GIDSignInDelegate {
     }
 }
 extension GoogleHandler: GIDSignInUIDelegate {
-    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+    public func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
         guard let controller = loginHandlerController else {
             return
         }
         controller.present(viewController, animated: true, completion: nil)
     }
-    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+    public func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
         viewController.dismiss(animated: true, completion: nil)
     }
 }
