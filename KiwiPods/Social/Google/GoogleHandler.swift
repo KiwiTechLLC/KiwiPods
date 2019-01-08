@@ -8,15 +8,15 @@
 
 import UIKit
 import GoogleSignIn
-class GoogleHandler: NSObject {
-    static let `shared` = GoogleHandler()
+open class GoogleHandler: NSObject {
+    static public let `shared` = GoogleHandler()
     override private init() {
         super.init()
         GIDSignIn.sharedInstance()?.delegate = self
     }
     fileprivate var loginCompletion: ((String?, Error?) -> Void)?
     fileprivate var loginHandlerController: UIViewController?
-    func getUser(from controller: UIViewController, completion: @escaping (_ token: String?, _ error: Error?) -> Void) {
+    public func getUser(from controller: UIViewController, completion: @escaping (_ token: String?, _ error: Error?) -> Void) {
         if let user = GIDSignIn.sharedInstance()?.currentUser {
             loginCompletion = nil
             completion(user.authentication.idToken, nil)
