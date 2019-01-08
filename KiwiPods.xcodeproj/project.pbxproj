@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		38F04F541C2C888359AB8568 /* Pods_KiwiPods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41185E9826A76800BF01C8A8 /* Pods_KiwiPods.framework */; };
+		D66402A921E4D4C70024B3D3 /* ValidationsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66402A821E4D4C70024B3D3 /* ValidationsUtils.swift */; };
+		D66402AF21E4D4FF0024B3D3 /* GoogleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66402AE21E4D4FF0024B3D3 /* GoogleHandler.swift */; };
 		D66ADF4121D50488004499F2 /* HashTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF3E21D50488004499F2 /* HashTextView.swift */; };
 		D66ADF4221D50488004499F2 /* UILinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4021D50488004499F2 /* UILinkLabel.swift */; };
 		D66ADF4F21D504B0004499F2 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66ADF4321D504AD004499F2 /* ImagePickerController.swift */; };
@@ -31,6 +33,8 @@
 		41185E9826A76800BF01C8A8 /* Pods_KiwiPods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KiwiPods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807FADC5BC231460701B403A /* Pods-KiwiPods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiPods.release.xcconfig"; path = "Pods/Target Support Files/Pods-KiwiPods/Pods-KiwiPods.release.xcconfig"; sourceTree = "<group>"; };
 		C57934D16A5207D271DDC35C /* Pods-KiwiPods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiPods.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KiwiPods/Pods-KiwiPods.debug.xcconfig"; sourceTree = "<group>"; };
+		D66402A821E4D4C70024B3D3 /* ValidationsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationsUtils.swift; sourceTree = "<group>"; };
+		D66402AE21E4D4FF0024B3D3 /* GoogleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleHandler.swift; sourceTree = "<group>"; };
 		D66ADF3E21D50488004499F2 /* HashTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashTextView.swift; sourceTree = "<group>"; };
 		D66ADF4021D50488004499F2 /* UILinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILinkLabel.swift; sourceTree = "<group>"; };
 		D66ADF4321D504AD004499F2 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
@@ -73,6 +77,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D66402AD21E4D4FF0024B3D3 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				D66402AE21E4D4FF0024B3D3 /* GoogleHandler.swift */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
 		D66ADF3D21D50488004499F2 /* HashTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +122,7 @@
 		D66ADF5D21D504D8004499F2 /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				D66402AD21E4D4FF0024B3D3 /* Google */,
 				D66ADF5B21D504BA004499F2 /* Facebook */,
 				D66ADF5C21D504C6004499F2 /* Twitter */,
 			);
@@ -158,6 +171,7 @@
 				D66ADF3D21D50488004499F2 /* HashTextView */,
 				D66ADF3F21D50488004499F2 /* UILinkLabel */,
 				D6B031672189D2C9003431C6 /* Networking */,
+				D66402A821E4D4C70024B3D3 /* ValidationsUtils.swift */,
 				D6B031602189D172003431C6 /* Info.plist */,
 			);
 			path = KiwiPods;
@@ -311,6 +325,8 @@
 				D66ADF5821D504B0004499F2 /* ImagePicker.swift in Sources */,
 				D66ADF4F21D504B0004499F2 /* ImagePickerController.swift in Sources */,
 				D66ADF5421D504B0004499F2 /* TwitterHelper.swift in Sources */,
+				D66402AF21E4D4FF0024B3D3 /* GoogleHandler.swift in Sources */,
+				D66402A921E4D4C70024B3D3 /* ValidationsUtils.swift in Sources */,
 				D66ADF5521D504B0004499F2 /* ImagePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

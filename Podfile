@@ -10,6 +10,6 @@ target 'KiwiPods' do
   pod 'SDWebImage'
   pod 'TwitterKit'
   pod 'MBProgressHUD'
-  # Pods for KiwiPods
+  pod 'GoogleSignIn'
 
 end
