@@ -108,7 +108,7 @@ final class FacebookLoginHelper {
                     if let result = result, !result.isCancelled {
                         completion?(true, nil)
                     } else {
-                        completion(nil, nil)
+                        completion?(false, nil)
                     }
                 }
             }

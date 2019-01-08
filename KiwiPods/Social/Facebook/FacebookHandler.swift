@@ -21,7 +21,7 @@ open class FacebookHandler: NSObject {
         })
         
     }
-    public func getFacebookUserToken(controller: UIViewController, completion: (String?, Error?) -> Void) {
+    public func getFacebookUserToken(controller: UIViewController, completion: @escaping (String?, Error?) -> Void) {
         FacebookLoginHelper().checklogin { (success, error) in
             if success {
                 let token = FacebookLoginHelper.getCurrentAccessToken()
