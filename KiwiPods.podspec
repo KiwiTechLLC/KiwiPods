@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "KiwiPods"
-  s.version      = "0.0.3"
+  s.version      = "0.0.2"
   s.summary      = "sdfgdgf"
 
   # This description is used to generate tags and improve search results.
@@ -122,6 +122,7 @@ Pod::Spec.new do |s|
     socialMedia.subspec 'Google' do |google|
       google.source_files = "KiwiPods/Social/Google/**/*.{h,m,swift}"
       google.dependency 'GoogleSignIn'
+      s.framework = 'GoogleSignIn'
     end
   end
 
