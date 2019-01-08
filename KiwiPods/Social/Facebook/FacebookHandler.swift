@@ -1,6 +1,6 @@
 //
 //  FacebookHandler.swift
-//  Integrations
+//  
 //
 //  Created by KiwiTech on 12/12/18.
 //  Copyright © 2018 KiwiTech. All rights reserved.
@@ -21,8 +21,18 @@ open class FacebookHandler: NSObject {
         })
         
     }
+    public func getFacebookUserToken(controller: UIViewController, completion: (String?, Error?) -> Void) {
+        FacebookLoginHelper().checklogin { (success, error) in
+            if success {
+                let token = FacebookLoginHelper.getCurrentAccessToken()
+                completion(token, nil)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
     public func getFacebookUserInfo(controller: UIViewController, completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
-        
+//        FacebookLoginHelper().getUserInfo(requestData: <#T##[String]#>, completion: <#T##(FaceBookLoginData?, Error?) -> Void#>)
     }
     fileprivate static var imageUrls = [String: String]()
     fileprivate static var queuedUrls = [String]()
