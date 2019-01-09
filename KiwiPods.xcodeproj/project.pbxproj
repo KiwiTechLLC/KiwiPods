@@ -25,6 +25,7 @@
 		D69C64D121E334FF00E22013 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69C64D021E334FF00E22013 /* NetworkModel.swift */; };
 		D6B031612189D172003431C6 /* KiwiPods.h in Headers */ = {isa = PBXBuildFile; fileRef = D6B0315F2189D172003431C6 /* KiwiPods.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6B031692189D2C9003431C6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B031682189D2C9003431C6 /* NetworkManager.swift */; };
+		D6E90B7421E4D5BA0072876C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E90B7321E4D5B90072876C /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		D6B0315F2189D172003431C6 /* KiwiPods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiwiPods.h; sourceTree = "<group>"; };
 		D6B031602189D172003431C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6B031682189D2C9003431C6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D6E90B7321E4D5B90072876C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				D6B0315F2189D172003431C6 /* KiwiPods.h */,
+				D6E90B7221E4D5B90072876C /* Logger */,
 				D66ADF5E21D504E5004499F2 /* ImagePicker */,
 				D66ADF5D21D504D8004499F2 /* Social */,
 				D66ADF3D21D50488004499F2 /* HashTextView */,
@@ -170,6 +173,14 @@
 				D69C64D021E334FF00E22013 /* NetworkModel.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		D6E90B7221E4D5B90072876C /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				D6E90B7321E4D5B90072876C /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		E7DA49B519516020E9531073 /* Frameworks */ = {
@@ -310,6 +321,7 @@
 				D66ADF4121D50488004499F2 /* HashTextView.swift in Sources */,
 				D66ADF5821D504B0004499F2 /* ImagePicker.swift in Sources */,
 				D66ADF4F21D504B0004499F2 /* ImagePickerController.swift in Sources */,
+				D6E90B7421E4D5BA0072876C /* Logger.swift in Sources */,
 				D66ADF5421D504B0004499F2 /* TwitterHelper.swift in Sources */,
 				D66ADF5521D504B0004499F2 /* ImagePickerCell.swift in Sources */,
 			);
