@@ -30,7 +30,7 @@ public enum RequestType: String {
 
 //using our own URLRequestConvertible so that networking library can be updated easily
 public protocol URLRequestConvertible {
-    func asURLRequest() -> URLRequest?
+    func asURLRequest() throws -> URLRequest
 }
 
 public protocol APIConfigurable: URLRequestConvertible {
@@ -41,7 +41,7 @@ public protocol APIConfigurable: URLRequestConvertible {
 }
 
 public extension APIConfigurable {
-    public func asURLRequest() -> URLRequest? {
+    public func asURLRequest() throws -> URLRequest {
         var queryItems = ""
         if type == .GET, parameters.count > 0 {
             queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
@@ -56,20 +56,18 @@ public extension APIConfigurable {
             if type != .GET {
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             }
-            urlRequest.cachePolicy = .reloadIgnoringCacheData
             return urlRequest
         } catch {
-            print(error.localizedDescription)
-            return nil
+            throw error
         }
     }
 }
 public protocol ParameterConvertible: Codable {
-    static func objectFrom(json: Any, decoder: JSONDecoder)throws -> ParameterConvertible?
+    static func objectFrom(json: Any, decoder: JSONDecoder)throws -> Self?
     func toParams()throws -> [String: Any]?
 }
 public extension ParameterConvertible {
-    static public func objectFrom(json: Any, decoder: JSONDecoder) throws -> ParameterConvertible? {
+    static public func objectFrom(json: Any, decoder: JSONDecoder = JSONDecoder()) throws -> Self? {
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
             let jsonModel = try decoder.decode(self, from: data)
@@ -95,7 +93,7 @@ public enum Response<ResponseType> where ResponseType: ParameterConvertible {
         public let error: Error?
         public let statusCode: Int?
         public let errorValue: [String: Any]?
-        public init(error: Error?, statusCode: Int?, errorValue: [String: Any]? = nil) {
+        public init(error: Error?, statusCode: Int? = nil, errorValue: [String: Any]? = nil) {
             self.error = error
             self.statusCode = statusCode
             self.errorValue = errorValue
