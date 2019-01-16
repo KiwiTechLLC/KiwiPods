@@ -119,6 +119,11 @@ Pod::Spec.new do |s|
       twitter.source_files = "KiwiPods/Social/Twitter/**/*.{h,m,swift}"
       twitter.dependency 'TwitterKit'
     end
+    socialMedia.subspec 'Google' do |google|
+      google.source_files = "KiwiPods/Social/Google/**/*.{h,m,swift}"
+      google.dependency 'GoogleSignIn'
+      s.framework = 'GoogleSignIn'
+    end
   end
 
   s.subspec 'ImagePicker' do |imagePicker|
