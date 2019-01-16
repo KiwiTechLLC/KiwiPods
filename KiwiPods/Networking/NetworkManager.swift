@@ -27,7 +27,7 @@ open class NetworkManager: NSObject {
             case .success(let value):
                 do {
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    if let obj = try ModelClass.objectFrom(json: value, decoder: decoder) as? ModelClass {
+                    if let obj = try ModelClass.objectFrom(json: value, decoder: decoder) {
                         let model = Response.ResponseValue(value: obj, statusCode: response.response?.statusCode)
                         completion(Response.success(model))
                     } else {

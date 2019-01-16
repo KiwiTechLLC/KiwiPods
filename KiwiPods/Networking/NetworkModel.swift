@@ -78,11 +78,11 @@ public extension ParameterConvertible {
     }
     public func toParams()throws -> [String: Any]? {
         do {
-            let data = try JSONEncoder().encode(self)
-            if let dict = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any] {
-                return dict
-            }
-            return nil
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            let data = try encoder.encode(self)
+            let dict = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+            return dict
         } catch let error {
             throw error
         }
