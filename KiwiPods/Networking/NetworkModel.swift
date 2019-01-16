@@ -88,6 +88,7 @@ public extension ParameterConvertible {
         }
     }
 }
+public typealias APIError<Type: ParameterConvertible> = Response<Type>.ResponseError
 public enum Response<ResponseType> where ResponseType: ParameterConvertible {
     public struct ResponseError {
         public let error: Error?
@@ -109,23 +110,11 @@ public enum Response<ResponseType> where ResponseType: ParameterConvertible {
                 {
                     return error
                 }
-                
                 if let error = dict["status"] as? String, error.count > 0
                 {
                     return error
                 }
-                
-                if let usernameDict = dict["username"] as? [String: Any], let name = usernameDict["name"] as? String, name == "ValidatorError"
-                {
-                    return "Username is already in use"
-                }
-                
-                if let emailDict = dict["email"] as? [String: Any], let name = emailDict["name"] as? String, name == "ValidatorError"
-                {
-                    return "Username is already in use"
-                }
             }
-            
             return nil
         }
     }
