@@ -8,13 +8,13 @@
 
 import UIKit
 import Alamofire
-
+public typealias Completion<Model: ParameterConvertible> = (Response<Model>) -> Void
 open class NetworkManager: NSObject {
     static public let shared = NetworkManager()
     private override init() {
         super.init()
     }
-    public func hitApi<ModelClass: ParameterConvertible>(urlRequest: URLRequest, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Response<ModelClass>) -> Void) {
+    public func hitApi<ModelClass: ParameterConvertible>(urlRequest: URLRequest, decoder: JSONDecoder = JSONDecoder(), completion: @escaping Completion<ModelClass>) {
         Alamofire.request(urlRequest).validate().responseJSON { (response) in
             
             var errorValue: [String: Any]? = [:]
@@ -27,20 +27,20 @@ open class NetworkManager: NSObject {
             case .success(let value):
                 do {
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    if let obj = try ModelClass.objectFrom(json: value, decoder: decoder) as? ModelClass {
+                    if let obj = try ModelClass.objectFrom(json: value, decoder: decoder) {
                         let model = Response.ResponseValue(value: obj, statusCode: response.response?.statusCode)
                         completion(Response.success(model))
                     } else {
                         /*let className = String(describing: ModelClass.self)
                         fatalError("Can not parse response in provided model type: \(className)")*/
                         
-                        completion(Response.failed(Response.ResponseError(error: APIErrors.parserError, statusCode: response.response?.statusCode, errorValue: errorValue)))
+                        completion(Response.failed(APIError(error: APIErrors.parserError, statusCode: response.response?.statusCode, errorValue: errorValue)))
                     }
                 } catch let error {
-                    completion(Response.failed(Response.ResponseError(error: error, statusCode: response.response?.statusCode, errorValue: errorValue)))
+                    completion(Response.failed(APIError(error: error, statusCode: response.response?.statusCode, errorValue: errorValue)))
                 }
             case .failure(let error):
-                completion(Response.failed(Response.ResponseError(error: error, statusCode: response.response?.statusCode, errorValue: errorValue)))
+                completion(Response.failed(APIError(error: error, statusCode: response.response?.statusCode, errorValue: errorValue)))
             }
         }
     }
