@@ -26,6 +26,8 @@ public enum RequestType: String {
             return HTTPMethod.delete
         case .PUT:
             return HTTPMethod.put
+        case .HEAD:
+            return .head
         }
     }
 }
