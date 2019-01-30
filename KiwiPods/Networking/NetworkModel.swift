@@ -13,7 +13,9 @@ public enum RequestType: String {
     case POST,
     GET,
     DELETE,
-    PUT
+    PUT,
+    HEAD
+    
     public var httpMethod: HTTPMethod {
         switch self {
         case .POST:
@@ -43,7 +45,8 @@ public protocol APIConfigurable: URLRequestConvertible {
 public extension APIConfigurable {
     public func asURLRequest() throws -> URLRequest {
         var queryItems = ""
-        if type == .GET, parameters.count > 0 {
+        let hasUrlEncodedParams = (type == .GET || type == .DELETE || type == .HEAD)
+        if hasUrlEncodedParams, parameters.count > 0 {
             queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
                 return value + "\(arg1.0)=\(arg1.1)&"
             }
@@ -52,8 +55,19 @@ public extension APIConfigurable {
         let url = URL(string: (path + queryItems))
         do {
             var urlRequest = try URLRequest(url: url!, method: type.httpMethod)
-            urlRequest.allHTTPHeaderFields = headers
-            if type != .GET {
+            var apiHeaders = self.headers
+            //check if `Content-Type` is provided
+            // if `Content-Type` are not provided then add `application/json` as default
+            if let headers = apiHeaders {
+                if headers["Content-Type"] == nil {
+                    apiHeaders?["Content-Type"] = "application/json"
+                }
+            } else {
+                apiHeaders = [:]
+                apiHeaders?["Content-Type"] = "application/json"
+            }
+            urlRequest.allHTTPHeaderFields = apiHeaders
+            if !hasUrlEncodedParams {
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             }
             return urlRequest
