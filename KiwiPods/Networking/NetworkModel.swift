@@ -14,7 +14,8 @@ public enum RequestType: String {
     GET,
     DELETE,
     PUT,
-    HEAD
+    HEAD,
+    PATCH
     
     public var httpMethod: HTTPMethod {
         switch self {
@@ -28,6 +29,8 @@ public enum RequestType: String {
             return HTTPMethod.put
         case .HEAD:
             return .head
+        case .PATCH:
+            return .patch
         }
     }
 }
