@@ -14,7 +14,7 @@ open class GoogleHandler: NSObject {
         super.init()
         GIDSignIn.sharedInstance()?.delegate = self
     }
-    func setClientId(value: String) {
+    public func setClientId(value: String) {
         GIDSignIn.sharedInstance()?.clientID = value
     }
     fileprivate var loginCompletion: ((String?, Error?) -> Void)?
