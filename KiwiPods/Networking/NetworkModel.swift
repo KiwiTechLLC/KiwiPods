@@ -89,6 +89,7 @@ public extension ParameterConvertible {
     static public func objectFrom(json: Any, decoder: JSONDecoder = JSONDecoder()) throws -> Self? {
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let jsonModel = try decoder.decode(self, from: data)
             return jsonModel
         } catch let error {
