@@ -7,7 +7,7 @@ target 'KiwiPods' do
   pod 'Alamofire', '~> 4.7'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
-  pod 'SDWebImage', '4.4.6'
+  pod 'SDWebImage', '~> 5.0'
   pod 'TwitterKit'
   pod 'MBProgressHUD'
   pod 'GoogleSignIn'

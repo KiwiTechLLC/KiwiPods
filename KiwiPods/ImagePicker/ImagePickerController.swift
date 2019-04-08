@@ -200,7 +200,7 @@ open class ImagePickerController: UIViewController {
                         group.leave()
                         return
                     }
-                    if let image = SDImageCache.shared().imageFromCache(forKey: urlStr) {
+                    if let image = SDImageCache.shared.imageFromCache(forKey: urlStr) {
                         imagesAry.append(image)
                     } else if let url = URL(string: urlStr) {
                         if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
@@ -235,7 +235,7 @@ open class ImagePickerController: UIViewController {
         for indexPath in indexPaths {
             group.enter()
             let url = twitterImages[indexPath.row]
-            if let image = SDImageCache.shared().imageFromCache(forKey: url.absoluteString) {
+            if let image = SDImageCache.shared.imageFromCache(forKey: url.absoluteString) {
                 images.append(image)
                 group.leave()
             } else {
