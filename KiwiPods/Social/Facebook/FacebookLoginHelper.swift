@@ -95,13 +95,13 @@ final class FacebookLoginHelper {
     private var viewController: UIViewController?
 
     class func getCurrentAccessToken() -> String? {
-        return FBSDKAccessToken.current()?.tokenString
+        return AccessToken.current?.tokenString
     }
     public func checklogin(completion: ((Bool, Error?) -> Void)?) {
-        if let _ = FBSDKAccessToken.current() {
+        if let _ = AccessToken.current {
             completion?(true, nil)
         } else {
-            FBSDKLoginManager().logIn(withReadPermissions: FacebookReadPermissions.allCases.map{$0.rawValue}, from: viewController ?? UIViewController()) { (result, error) in
+            LoginManager().logIn(permissions: FacebookReadPermissions.allCases.map{$0.rawValue}, from: viewController ?? UIViewController()) { (result, error) in
                 if let error = error {
                     completion?(false, error)
                 } else {
@@ -117,8 +117,8 @@ final class FacebookLoginHelper {
     public func getUserInfo(requestData: [String], completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
         checklogin { (success, error) in
             if success {
-                let graphRequest = FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": requestData.joined(separator: ",")])
-                _ = graphRequest?.start(completionHandler: { (_, result, error) in
+                let graphRequest = GraphRequest(graphPath: "/me", parameters: ["fields": requestData.joined(separator: ",")])
+                _ = graphRequest.start(completionHandler: { (_, result, error) in
                     if let result = result, let deocdedData = try? JSONSerialization.data(withJSONObject: result, options: JSONSerialization.WritingOptions.prettyPrinted) {
                         do {
                             let fbloginData: FaceBookLoginData = try JSONDecoder().decode(FaceBookLoginData.self, from: deocdedData)
@@ -141,8 +141,8 @@ final class FacebookLoginHelper {
             if let after = after {
                 params["after"] = after
             }
-            let graphRequest = FBSDKGraphRequest(graphPath: "me/photos", parameters: params)
-            _ = graphRequest?.start(completionHandler: { (_, result, error) in
+            let graphRequest = GraphRequest(graphPath: "me/photos", parameters: params)
+            _ = graphRequest.start(completionHandler: { (_, result, error) in
                 if let result = result, let deocdedData = try? JSONSerialization.data(withJSONObject: result, options: JSONSerialization.WritingOptions.prettyPrinted) {
                     do {
                         let fbloginData: FacebookUserImagesResponse = try JSONDecoder().decode(FacebookUserImagesResponse.self, from: deocdedData)
@@ -161,8 +161,8 @@ final class FacebookLoginHelper {
             if success {
                 //to be used -- 108566810189028?fields=height,width,images,picture
                 //108566810189028/picture?type=normal
-                let graphRequest = FBSDKGraphRequest(graphPath: "\(imageId)", parameters: ["fields":"height,width,images,picture"])
-                _ = graphRequest?.start(completionHandler: { (_, result, error) in
+                let graphRequest = GraphRequest(graphPath: "\(imageId)", parameters: ["fields":"height,width,images,picture"])
+                _ = graphRequest.start(completionHandler: { (_, result, error) in
                     if let result = result, let deocdedData = try? JSONSerialization.data(withJSONObject: result, options: JSONSerialization.WritingOptions.prettyPrinted) {
                         do {
                             let fbloginData: PictureData = try JSONDecoder().decode(PictureData.self, from: deocdedData)
