@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "KiwiPods"
-  s.version      = "0.0.2"
-  s.summary      = "sdfgdgf"
+  s.version      = "0.0.4"
+  s.summary      = "Summary"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?

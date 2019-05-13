@@ -8,7 +8,7 @@
 
 import UIKit
 import Photos
-enum DeviceImageSize {
+public enum DeviceImageSize {
     case thumb(CGSize?),
     original
     var size: CGSize {
@@ -20,8 +20,8 @@ enum DeviceImageSize {
         }
     }
 }
-class DeviceMediaHandler: NSObject {
-    func getImages(with size: DeviceImageSize = .thumb(nil), completion: @escaping (PHFetchResult<PHAsset>?, [UIImage]?, Error?) -> Void) {
+open class DeviceMediaHandler: NSObject {
+    public func getImages(with size: DeviceImageSize = .thumb(nil), completion: @escaping (PHFetchResult<PHAsset>?, [UIImage]?, Error?) -> Void) {
         PHPhotoLibrary.requestAuthorization { status in
             switch status {
             case .authorized:
@@ -41,7 +41,7 @@ class DeviceMediaHandler: NSObject {
             }
         }
     }
-    func getImage(from photos: PHFetchResult<PHAsset>,for  size: CGSize, completion: @escaping ([UIImage]) -> Void) {
+    public func getImage(from photos: PHFetchResult<PHAsset>,for  size: CGSize, completion: @escaping ([UIImage]) -> Void) {
         let queue = DispatchQueue(label: "imageThumbGeneration")
         queue.async {
             var thumbImages = [UIImage]()
@@ -59,7 +59,7 @@ class DeviceMediaHandler: NSObject {
         }
     }
 }
-enum ImageGetchError: Error {
+public enum ImageGetchError: Error {
     case accessNotAvailable,
     accessNotDetermined
 }

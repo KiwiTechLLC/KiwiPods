@@ -13,7 +13,10 @@ public enum RequestType: String {
     case POST,
     GET,
     DELETE,
-    PUT
+    PUT,
+    HEAD,
+    PATCH
+    
     public var httpMethod: HTTPMethod {
         switch self {
         case .POST:
@@ -24,6 +27,10 @@ public enum RequestType: String {
             return HTTPMethod.delete
         case .PUT:
             return HTTPMethod.put
+        case .HEAD:
+            return .head
+        case .PATCH:
+            return .patch
         }
     }
 }
@@ -43,7 +50,8 @@ public protocol APIConfigurable: URLRequestConvertible {
 public extension APIConfigurable {
     public func asURLRequest() throws -> URLRequest {
         var queryItems = ""
-        if type == .GET, parameters.count > 0 {
+        let hasUrlEncodedParams = (type == .GET || type == .DELETE || type == .HEAD)
+        if hasUrlEncodedParams, parameters.count > 0 {
             queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
                 return value + "\(arg1.0)=\(arg1.1)&"
             }
@@ -52,8 +60,19 @@ public extension APIConfigurable {
         let url = URL(string: (path + queryItems))
         do {
             var urlRequest = try URLRequest(url: url!, method: type.httpMethod)
-            urlRequest.allHTTPHeaderFields = headers
-            if type != .GET {
+            var apiHeaders = self.headers
+            //check if `Content-Type` is provided
+            // if `Content-Type` are not provided then add `application/json` as default
+            if let headers = apiHeaders {
+                if headers["Content-Type"] == nil {
+                    apiHeaders?["Content-Type"] = "application/json"
+                }
+            } else {
+                apiHeaders = [:]
+                apiHeaders?["Content-Type"] = "application/json"
+            }
+            urlRequest.allHTTPHeaderFields = apiHeaders
+            if !hasUrlEncodedParams {
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             }
             return urlRequest
@@ -70,6 +89,7 @@ public extension ParameterConvertible {
     static public func objectFrom(json: Any, decoder: JSONDecoder = JSONDecoder()) throws -> Self? {
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let jsonModel = try decoder.decode(self, from: data)
             return jsonModel
         } catch let error {

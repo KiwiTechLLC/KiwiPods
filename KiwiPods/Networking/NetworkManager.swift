@@ -14,8 +14,9 @@ open class NetworkManager: NSObject {
     private override init() {
         super.init()
     }
-    public func hitApi<ModelClass: ParameterConvertible>(urlRequest: URLRequest, decoder: JSONDecoder = JSONDecoder(), completion: @escaping Completion<ModelClass>) {
-        Alamofire.request(urlRequest).validate().responseJSON { (response) in
+    @discardableResult
+    public func hitApi<ModelClass: ParameterConvertible>(urlRequest: URLRequest, decoder: JSONDecoder = JSONDecoder(), completion: @escaping Completion<ModelClass>) -> URLSessionTask? {
+        let request = Alamofire.request(urlRequest).validate().responseJSON { (response) in
             
             var errorValue: [String: Any]? = [:]
             if let data = response.data {
@@ -43,5 +44,6 @@ open class NetworkManager: NSObject {
                 completion(Response.failed(APIError(error: error, statusCode: response.response?.statusCode, errorValue: errorValue)))
             }
         }
+        return request.task
     }
 }
