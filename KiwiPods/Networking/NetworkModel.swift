@@ -141,6 +141,10 @@ public enum Response<ResponseType> where ResponseType: ParameterConvertible {
     public struct ResponseValue {
         public let value: ResponseType
         public let statusCode: Int?
+        public init(value: ResponseType, statusCode: Int?) {
+            self.value = value
+            self.statusCode = statusCode
+        }
     }
     case success(ResponseValue),
     failed(ResponseError)
