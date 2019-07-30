@@ -32,7 +32,9 @@ open class FacebookHandler: NSObject {
         }
     }
     public func getFacebookUserInfo(controller: UIViewController, completion: @escaping (_ result: FaceBookLoginData?, _ error: Error?) -> Void) {
-//        FacebookLoginHelper().getUserInfo(requestData: <#T##[String]#>, completion: <#T##(FaceBookLoginData?, Error?) -> Void#>)
+        FacebookLoginHelper().getUserInfo(requestData: ["email"]) { (result, error) in
+            completion(result, error)
+        }
     }
     fileprivate static var imageUrls = [String: String]()
     fileprivate static var queuedUrls = [String]()
