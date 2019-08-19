@@ -26,7 +26,7 @@ open class GoogleHandler: NSObject {
         } else {
             loginCompletion = completion
             loginHandlerController = controller
-            GIDSignIn.sharedInstance()?.uiDelegate = self
+            GIDSignIn.sharedInstance()?.delegate = self
             GIDSignIn.sharedInstance()?.signIn()
         }
     }
@@ -40,7 +40,7 @@ extension GoogleHandler: GIDSignInDelegate {
         loginCompletion?(user.authentication.idToken, nil)
     }
 }
-extension GoogleHandler: GIDSignInUIDelegate {
+extension GoogleHandler {
     public func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
         guard let controller = loginHandlerController else {
             return
