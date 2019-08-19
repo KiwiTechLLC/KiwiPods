@@ -10,6 +10,6 @@ target 'KiwiPods' do
   pod 'SDWebImage', '~> 5.0'
   pod 'TwitterKit'
   pod 'MBProgressHUD'
-  pod 'GoogleSignIn'
+  pod 'GoogleSignIn', '4.4.0'
 
 end
