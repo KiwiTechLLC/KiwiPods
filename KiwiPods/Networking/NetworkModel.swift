@@ -48,33 +48,24 @@ public protocol APIConfigurable: URLRequestConvertible {
 }
 
 public extension APIConfigurable {
-    public func asURLRequest() throws -> URLRequest {
-        var queryItems = ""
-        let hasUrlEncodedParams = (type == .GET || type == .DELETE || type == .HEAD)
-        if hasUrlEncodedParams, parameters.count > 0 {
-            queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
-                return value + "\(arg1.0)=\(arg1.1)&"
-            }
-            queryItems.removeLast()
-        }
-        let url = URL(string: (path + queryItems))
+    func asURLRequest() throws -> URLRequest {
+        let url = URL(string: path)
         do {
             var urlRequest = try URLRequest(url: url!, method: type.httpMethod)
+            let encoding = URLEncoding()
+            urlRequest = try encoding.encode(urlRequest, with: parameters)
             var apiHeaders = self.headers
             //check if `Content-Type` is provided
             // if `Content-Type` are not provided then add `application/json` as default
-            if let headers = apiHeaders {
-                if headers["Content-Type"] == nil {
-                    apiHeaders?["Content-Type"] = "application/json"
-                }
-            } else {
-                apiHeaders = [:]
-                apiHeaders?["Content-Type"] = "application/json"
-            }
+//            if let headers = apiHeaders {
+//                if headers["Content-Type"] == nil {
+//                    apiHeaders?["Content-Type"] = "application/json"
+//                }
+//            } else {
+//                apiHeaders = [:]
+//                apiHeaders?["Content-Type"] = "application/json"
+//            }
             urlRequest.allHTTPHeaderFields = apiHeaders
-            if !hasUrlEncodedParams {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
-            }
             return urlRequest
         } catch {
             throw error
