@@ -49,11 +49,22 @@ public protocol APIConfigurable: URLRequestConvertible {
 
 public extension APIConfigurable {
     func asURLRequest() throws -> URLRequest {
+        let hasUrlEncodedParams = (type == .GET || type == .DELETE || type == .HEAD)
+//        if hasUrlEncodedParams, parameters.count > 0 {
+//            queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
+//                return value + "\(arg1.0)=\(arg1.1)&"
+//            }
+//            queryItems.removeLast()
+//        }
         let url = URL(string: path)
         do {
             var urlRequest = try URLRequest(url: url!, method: type.httpMethod)
-            let encoding = URLEncoding()
-            urlRequest = try encoding.encode(urlRequest, with: parameters)
+            if hasUrlEncodedParams {
+                let encoding = URLEncoding()
+                urlRequest = try encoding.encode(urlRequest, with: parameters)
+            } else {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
+            }
             var apiHeaders = self.headers
             //check if `Content-Type` is provided
             // if `Content-Type` are not provided then add `application/json` as default
