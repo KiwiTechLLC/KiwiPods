@@ -68,14 +68,14 @@ public extension APIConfigurable {
             var apiHeaders = self.headers
             //check if `Content-Type` is provided
             // if `Content-Type` are not provided then add `application/json` as default
-//            if let headers = apiHeaders {
-//                if headers["Content-Type"] == nil {
-//                    apiHeaders?["Content-Type"] = "application/json"
-//                }
-//            } else {
-//                apiHeaders = [:]
-//                apiHeaders?["Content-Type"] = "application/json"
-//            }
+            if let headers = apiHeaders {
+                if headers["Content-Type"] == nil {
+                    apiHeaders?["Content-Type"] = "application/json"
+                }
+            } else {
+                apiHeaders = [:]
+                apiHeaders?["Content-Type"] = "application/json"
+            }
             urlRequest.allHTTPHeaderFields = apiHeaders
             return urlRequest
         } catch {
