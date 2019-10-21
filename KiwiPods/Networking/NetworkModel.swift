@@ -48,18 +48,23 @@ public protocol APIConfigurable: URLRequestConvertible {
 }
 
 public extension APIConfigurable {
-    public func asURLRequest() throws -> URLRequest {
-        var queryItems = ""
+    func asURLRequest() throws -> URLRequest {
         let hasUrlEncodedParams = (type == .GET || type == .DELETE || type == .HEAD)
-        if hasUrlEncodedParams, parameters.count > 0 {
-            queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
-                return value + "\(arg1.0)=\(arg1.1)&"
-            }
-            queryItems.removeLast()
-        }
-        let url = URL(string: (path + queryItems))
+//        if hasUrlEncodedParams, parameters.count > 0 {
+//            queryItems = parameters.reduce("?") { (value: String, arg1: (String, Any)) -> String in
+//                return value + "\(arg1.0)=\(arg1.1)&"
+//            }
+//            queryItems.removeLast()
+//        }
+        let url = URL(string: path)
         do {
             var urlRequest = try URLRequest(url: url!, method: type.httpMethod)
+            if hasUrlEncodedParams {
+                let encoding = URLEncoding()
+                urlRequest = try encoding.encode(urlRequest, with: parameters)
+            } else {
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
+            }
             var apiHeaders = self.headers
             //check if `Content-Type` is provided
             // if `Content-Type` are not provided then add `application/json` as default
@@ -72,9 +77,6 @@ public extension APIConfigurable {
                 apiHeaders?["Content-Type"] = "application/json"
             }
             urlRequest.allHTTPHeaderFields = apiHeaders
-            if !hasUrlEncodedParams {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
-            }
             return urlRequest
         } catch {
             throw error
@@ -141,6 +143,10 @@ public enum Response<ResponseType> where ResponseType: ParameterConvertible {
     public struct ResponseValue {
         public let value: ResponseType
         public let statusCode: Int?
+        public init(value: ResponseType, statusCode: Int?) {
+            self.value = value
+            self.statusCode = statusCode
+        }
     }
     case success(ResponseValue),
     failed(ResponseError)

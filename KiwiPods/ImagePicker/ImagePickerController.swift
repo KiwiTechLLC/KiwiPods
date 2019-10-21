@@ -294,7 +294,7 @@ extension ImagePickerController: UICollectionViewDataSource {
     }
 }
 extension ImagePickerController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         guard indexPath.row < imageAryCount else {
             return false
         }
@@ -304,7 +304,7 @@ extension ImagePickerController: UICollectionViewDelegate {
         delegate?.imagePicker(picker: self, failedWithError: .maxItemSelectionLimitExceeded)
         return false
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
 }
@@ -331,7 +331,7 @@ fileprivate extension ImagePickerController {
     }
 }
 extension ImagePickerController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row < imageAryCount {
             return CGSize(width: (UIScreen.main.bounds.width/3)-3, height: (UIScreen.main.bounds.width/3)-3)
         } else {
@@ -340,7 +340,7 @@ extension ImagePickerController: UICollectionViewDelegateFlowLayout {
     }
 }
 extension ImagePickerController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let fiftyPercent = (scrollView.contentSize.height*50) / 100.0
         if scrollView.bounds.maxY > fiftyPercent {
             if type == .facebook {
